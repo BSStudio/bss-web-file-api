@@ -1,4 +1,4 @@
-FROM python:3.12 AS builder
+FROM python:3.13 AS builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY ./src/bss_web_file_server/__init__.py ./src/bss_web_file_server/
 RUN pip wheel --wheel-dir ./wheels .
 
 
-FROM python:3.12-slim AS app
+FROM python:3.13-slim AS app
 
 # Create a non-root user
 RUN adduser --system --group --home /home/nonroot nonroot
