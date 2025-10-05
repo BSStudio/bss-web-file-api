@@ -33,13 +33,13 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "astroid"
-version = "3.3.5"
+version = "3.3.11"
 description = "An abstract syntax tree for Python with inference support."
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "astroid-3.3.5-py3-none-any.whl", hash = "sha256:a9d1c946ada25098d790e079ba2a1b112157278f3fb7e718ae6a9252f5835dc8"},
-    {file = "astroid-3.3.5.tar.gz", hash = "sha256:5cfc40ae9f68311075d27ef68a4841bdc5cc7f6cf86671b49f00607d30188e2d"},
+    {file = "astroid-3.3.11-py3-none-any.whl", hash = "sha256:54c760ae8322ece1abd213057c4b5bba7c49818853fc901ef09719a60dbf9dec"},
+    {file = "astroid-3.3.11.tar.gz", hash = "sha256:1e5a5011af2920c7c67a53f65d536d65bfa7116feeaf2354d8b94f29573bb0ce"},
 ]
 
 [[package]]
@@ -1286,22 +1286,22 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pylint"
-version = "3.3.2"
+version = "3.3.9"
 description = "python code static checker"
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "pylint-3.3.2-py3-none-any.whl", hash = "sha256:77f068c287d49b8683cd7c6e624243c74f92890f767f106ffa1ddf3c0a54cb7a"},
-    {file = "pylint-3.3.2.tar.gz", hash = "sha256:9ec054ec992cd05ad30a6df1676229739a73f8feeabf3912c995d17601052b01"},
+    {file = "pylint-3.3.9-py3-none-any.whl", hash = "sha256:01f9b0462c7730f94786c283f3e52a1fbdf0494bbe0971a78d7277ef46a751e7"},
+    {file = "pylint-3.3.9.tar.gz", hash = "sha256:d312737d7b25ccf6b01cc4ac629b5dcd14a0fcf3ec392735ac70f137a9d5f83a"},
 ]
 
 [package.dependencies]
-astroid = ">=3.3.5,<=3.4.0-dev0"
+astroid = ">=3.3.8,<=3.4.0.dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = {version = ">=0.3.7", markers = "python_version >= \"3.12\""}
-isort = ">=4.2.5,<5.13.0 || >5.13.0,<6"
+isort = ">=4.2.5,<5.13 || >5.13,<7"
 mccabe = ">=0.6,<0.8"
-platformdirs = ">=2.2.0"
+platformdirs = ">=2.2"
 tomlkit = ">=0.10.1"
 
 [package.extras]
@@ -2097,4 +2097,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "4c1f8e5a607a9a8570b67709425ac52e19c172d3d5cf1d1bb3d68ca7a1460457"
+content-hash = "216706bad7c7a2e3270a4e4aac6ed9baea912b696cff5e9ad1e386fb82d4d79e"
