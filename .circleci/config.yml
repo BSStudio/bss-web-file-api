@@ -7,7 +7,7 @@ orbs:
 executors:
   python:
     docker:
-      - image: cimg/python:3.12.7
+      - image: cimg/python:3.14.0
   python-machine:
     machine:
       docker_layer_caching: true
