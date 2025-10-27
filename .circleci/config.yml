@@ -1,9 +1,9 @@
 version: 2.1
 orbs:
   python: circleci/python@2.2.0
-  docker: circleci/docker@2.8.1
-  github-cli: circleci/github-cli@2.6.0
-  codecov: codecov/codecov@5.0.3
+  docker: circleci/docker@3.0.1
+  github-cli: circleci/github-cli@2.7.2
+  codecov: codecov/codecov@5.4.3
 executors:
   python:
     docker:
