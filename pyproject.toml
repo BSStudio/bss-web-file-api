@@ -10,7 +10,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-fastapi = {version="0.115.2", extras=["all"]}
+fastapi = {version="0.120.1", extras=["all"]}
 pillow = "11.0.0"
 pillow-avif-plugin = "1.4.6"
 python = "^3.12"
