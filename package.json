@@ -1,0 +1,10 @@
+{
+  "name": "bss-web-file-api",
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "semantic-release": "25.0.1"
+  },
+  "packageManager": "pnpm@10.19.0"
+}
