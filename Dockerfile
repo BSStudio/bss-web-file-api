@@ -34,6 +34,3 @@ ENV SERVER_BASE_PATH="/home/nonroot/assets"
 CMD ["uvicorn", "src.bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 EXPOSE 80
-LABEL org.opencontainers.image.source="https://github.com/BSStudio/bss-web-file-api"
-LABEL org.opencontainers.image.description="BSS Web file API"
-LABEL org.opencontainers.image.licenses="GPL-3.0"
