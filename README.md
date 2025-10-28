@@ -1,3 +1,6 @@
+[![Docker](https://github.com/BSStudio/bss-web-file-api/actions/workflows/docker.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/docker.yml)
+[![Integration test](https://github.com/BSStudio/bss-web-file-api/actions/workflows/integration.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/integration.yml)
+[![Python](https://github.com/BSStudio/bss-web-file-api/actions/workflows/python.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/python.yml)
 ![GitHub Release Date](https://img.shields.io/github/release-date/BSStudio/bss-web-file-api)
 ![GitHub Tag](https://img.shields.io/github/v/tag/BSStudio/bss-web-file-api)
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/BSStudio/bss-web-file-api/main)
