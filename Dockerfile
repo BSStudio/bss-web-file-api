@@ -1,4 +1,6 @@
-FROM python:3.12.12-alpine AS builder
+FROM python:3.12.12-alpine@sha256:d82291d418d5c47f267708393e40599ae836f2260b0519dd38670e9d281657f5 AS python
+
+FROM python AS builder
 
 COPY --from=ghcr.io/astral-sh/uv:0.9.5@sha256:f459f6f73a8c4ef5d69f4e6fbbdb8af751d6fa40ec34b39a1ab469acd6e289b7 /uv /uvx /bin/
 
@@ -29,7 +31,7 @@ RUN --mount=type=cache,target=/root/.cache \
     uv sync --locked --no-dev --no-editable
 
 
-FROM python:3.12-alpine AS app
+FROM python AS app
 
 # Add the virtualenv to PATH
 ENV PATH="/app/bin:${PATH}"
@@ -44,6 +46,6 @@ USER nonroot:nonroot
 WORKDIR /app
 
 ENV SERVER_BASE_PATH="/home/nonroot/assets"
-CMD ["uvicorn", "bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
-EXPOSE 80
+EXPOSE 8080
