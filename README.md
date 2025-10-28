@@ -1,4 +1,6 @@
-![CircleCI](https://img.shields.io/circleci/build/github/BSStudio/bss-web-file-api/main?label=build)
+[![Docker](https://github.com/BSStudio/bss-web-file-api/actions/workflows/docker.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/docker.yml)
+[![Integration test](https://github.com/BSStudio/bss-web-file-api/actions/workflows/integration.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/integration.yml)
+[![Python](https://github.com/BSStudio/bss-web-file-api/actions/workflows/python.yml/badge.svg)](https://github.com/BSStudio/bss-web-file-api/actions/workflows/python.yml)
 ![GitHub Release Date](https://img.shields.io/github/release-date/BSStudio/bss-web-file-api)
 ![GitHub Tag](https://img.shields.io/github/v/tag/BSStudio/bss-web-file-api)
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/BSStudio/bss-web-file-api/main)
@@ -27,10 +29,10 @@ based on their uuid.
 ### Pre-requisites
 
 1. Install python (see version in pyproject.toml)
-2. Install poetry
+2. Install [uv](https://docs.astral.sh/uv/)
 
 ```shell
-poetry install
+uv sync
 ```
 
 ### Set up commit hooks
@@ -42,37 +44,45 @@ pre-commit install
 ## Run server
 
 ```shell
-uvicorn src.bss_web_file_server.main:app
+uv run uvicorn src.bss_web_file_server.main:app
 ```
 
 ### Lint
 
 ```shell
-poetry run isort . --check
-poetry run black . --check
-poetry run mypy
-poetry run pylint src
+uv run isort . --check
+uv run black . --check
+uv run mypy
+uv run pylint src
 ```
 
 #### Apply lint
 
 ```shell
-poetry run isort .
-poetry run black .
+uv run isort .
+uv run black .
 ```
 
 ### Run development server
 
 ```shell
-uvicorn src.bss_web_file_server.main:app --reload
+uv run uvicorn src.bss_web_file_server.main:app --reload
 ```
 
 
 ### Test
 
 ```shell
-poetry run pytest
+uv run pytest
 ```
+
+### Integration Test
+
+```shell
+uv run pytest tests-int
+```
+
+See [`.github/workflows/integration.yml`](.github/workflows/integration.yml) for CI/CD example with GitHub Actions.
 
 ### Build docker image
 
