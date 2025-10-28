@@ -1,4 +1,3 @@
-![CircleCI](https://img.shields.io/circleci/build/github/BSStudio/bss-web-file-api/main?label=build)
 ![GitHub Release Date](https://img.shields.io/github/release-date/BSStudio/bss-web-file-api)
 ![GitHub Tag](https://img.shields.io/github/v/tag/BSStudio/bss-web-file-api)
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/BSStudio/bss-web-file-api/main)
