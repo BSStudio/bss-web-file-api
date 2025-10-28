@@ -43,7 +43,7 @@ COPY --from=builder --chown=nonroot:nonroot /app /app
 USER nonroot:nonroot
 WORKDIR /app
 
-ENV SERVER_BASE_PATH="/app/assets"
+ENV SERVER_BASE_PATH="/home/nonroot/assets"
 CMD ["uvicorn", "bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 EXPOSE 80
