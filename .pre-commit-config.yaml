@@ -12,3 +12,5 @@ repos:
     rev: '25.9.0'
     hooks:
       - id: black
+# Note: can't run mypy via pre-commit as it requires type stubs to be installed which
+# pre-commit doesn't handle well. Run mypy directly in CI instead.
