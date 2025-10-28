@@ -22,6 +22,9 @@ RUN --mount=type=cache,target=/root/.cache \
 COPY . /src
 WORKDIR /src
 
+# Install the application into the build environment.
+# We won't need the source code in the production image,
+# only the installed packages.
 RUN --mount=type=cache,target=/root/.cache \
     uv sync --locked --no-dev --no-editable
 
