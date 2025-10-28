@@ -2,7 +2,7 @@
 name = "bss-web-file-server"
 version = "1.0.0"
 description = "BSS file server API"
-authors = [{ name = "Bence Csik", email = "bence@csik.dev" }]
+authors = [{ name = "Bence Csik", email = "22349790+csikb@users.noreply.github.com" }]
 requires-python = "==3.12.12"
 dependencies = [
     "fastapi[all]==0.120.1",
