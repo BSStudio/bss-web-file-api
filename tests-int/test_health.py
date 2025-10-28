@@ -3,6 +3,7 @@ import os
 import pytest
 import requests
 from testcontainers.compose import DockerCompose
+from testcontainers.core.wait_strategies import LogMessageWaitStrategy
 
 
 @pytest.fixture(scope="session")
@@ -12,8 +13,8 @@ def compose():
         context=os.getcwd(),
         compose_file_name="docker-compose.yml",
         build=True,
-        wait=True,
     )
+    compose.waiting_for({"app": LogMessageWaitStrategy("8080")})
     compose.start()
     yield compose
     compose.stop()
