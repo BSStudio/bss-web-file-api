@@ -184,3 +184,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+### Node.js template
+/node_modules

@@ -4,8 +4,6 @@ from collections import namedtuple
 from io import BytesIO
 from pathlib import Path
 
-# pillow_avif is required to save images as avif
-import pillow_avif  # type: ignore # pylint: disable=unused-import
 from PIL import Image
 
 ImgFormat = namedtuple("ImgFormat", ["width", "height", "name"])
