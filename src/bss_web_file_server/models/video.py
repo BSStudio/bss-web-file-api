@@ -1,4 +1,4 @@
-""" A module for storing the video model. """
+"""A module for storing the video model."""
 
 from typing import Annotated
 from uuid import UUID

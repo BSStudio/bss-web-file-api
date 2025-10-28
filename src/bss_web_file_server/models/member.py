@@ -1,4 +1,4 @@
-""" A module for storing the member model. """
+"""A module for storing the member model."""
 
 from uuid import UUID
 

@@ -1,0 +1,20 @@
+{
+  "name": "bss-web-file-api",
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": "22.21.0"
+  },
+  "devDependencies": {
+    "semantic-release": "25.0.1"
+  },
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  }
+}

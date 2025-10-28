@@ -1,16 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:best-practices",
+    "group:allDigest",
+    "security:openssf-scorecard",
+    "schedule:automergeWeekends",
+    "preview:dockerCompose",
+    "preview:dockerVersions",
+    "mergeConfidence:all-badges",
+    ":timezone(Europe/Dublin)",
+    ":automergeDigest",
+    ":automergeMinor",
+    ":semanticCommits",
+    ":pathSemanticCommitType(Dockerfile, perf)"
   ],
-  "pre-commit": {
-    "enabled": true
-  },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "groupName": "All GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest", "patch", "minor"]
     }
   ]
 }
