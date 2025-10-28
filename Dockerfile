@@ -31,15 +31,19 @@ RUN --mount=type=cache,target=/root/.cache \
 
 FROM python:3.12-slim@sha256:e97cf9a2e84d604941d9902f00616db7466ff302af4b1c3c67fb7c522efa8ed9 AS app
 
+# Add the virtualenv to PATH
+ENV PATH="/app/bin:${PATH}"
+
 # Create a non-root user
-RUN adduser --system --group --home /home/nonroot nonroot
-ENV PATH="/home/nonroot/.local/bin:${PATH}"
+RUN adduser --system --group --no-create-home nonroot
+
+# Copy the pre-built /app virtualenv and change ownership to nonroot
+COPY --from=builder --chown=nonroot:nonroot /app /app
+
 USER nonroot:nonroot
-WORKDIR /home/nonroot/app
+WORKDIR /app
 
-COPY --from=builder --chown=nonroot:nonroot /app ./
-
-ENV SERVER_BASE_PATH="/home/nonroot/assets"
-CMD ["uvicorn", "src.bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "80"]
+ENV SERVER_BASE_PATH="/app/assets"
+CMD ["uvicorn", "bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 EXPOSE 80
