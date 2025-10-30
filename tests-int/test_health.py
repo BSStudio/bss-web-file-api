@@ -14,7 +14,7 @@ def compose():
         compose_file_name="docker-compose.yml",
         build=True,
     )
-    compose.waiting_for({"app": LogMessageWaitStrategy("8080")})
+    compose.waiting_for({"app": LogMessageWaitStrategy("8000")})
     compose.start()
     yield compose
     compose.stop()
@@ -22,7 +22,7 @@ def compose():
 
 def test_health(compose: DockerCompose):
     host = compose.get_service_host("app")
-    port = compose.get_service_port("app", 8080)
+    port = compose.get_service_port("app", 8000)
     assert "Application startup complete." in compose.get_logs("app")[0]
     response = requests.get(f"http://{host}:{port}/health")
     assert response.status_code == 200
@@ -31,7 +31,7 @@ def test_health(compose: DockerCompose):
 
 def test_ping(compose: DockerCompose):
     host = compose.get_service_host("app")
-    port = compose.get_service_port("app", 8080)
+    port = compose.get_service_port("app", 8000)
     response = requests.get(f"http://{host}:{port}/ping")
     assert response.status_code == 200
     assert response.text == "PONG"
