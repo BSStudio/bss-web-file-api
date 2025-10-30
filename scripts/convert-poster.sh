@@ -1,5 +1,6 @@
-#!/usr/bin/env sh
-if [ "$#" -ne 2 ]; then
+#!/bin/bash
+
+if [[ "$#" -ne 2 ]]; then
     echo "1st argument: input image"
     echo "2nd argument: output folder"
     exit
