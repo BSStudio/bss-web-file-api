@@ -21,15 +21,15 @@ RUN --mount=type=cache,target=/root/.cache \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-dev --no-install-project
 
-COPY . /src
-WORKDIR /src
+COPY ./src /src
 
 # Install the application into the build environment.
 # We won't need the source code in the production image,
 # only the installed packages.
 RUN --mount=type=cache,target=/root/.cache \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-dev --no-editable
-
 
 FROM python AS app
 
@@ -40,12 +40,12 @@ ENV PATH="/app/bin:${PATH}"
 RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
 
 # Copy the pre-built /app virtualenv and change ownership to nonroot
-COPY --from=builder --chown=nonroot:nonroot /app /app
+COPY --from=builder --chown=nonroot:nonroot --chmod=500 /app /app
 
 USER nonroot:nonroot
 WORKDIR /app
 
 ENV SERVER_BASE_PATH="/home/nonroot/assets"
-CMD ["uvicorn", "bss_web_file_server.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["fastapi", "run", "--entrypoint", "bss_web_file_server.main:app"]
 
-EXPOSE 8080
+EXPOSE 8000
