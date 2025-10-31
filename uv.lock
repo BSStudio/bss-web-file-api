@@ -70,9 +70,7 @@ source = { editable = "." }
 dependencies = [
     { name = "fastapi", extra = ["all"] },
     { name = "pillow" },
-    { name = "python-multipart" },
     { name = "requests" },
-    { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.dev-dependencies]
@@ -82,8 +80,6 @@ dev = [
     { name = "mypy" },
     { name = "pre-commit" },
     { name = "pylint" },
-]
-test = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
@@ -94,9 +90,7 @@ test = [
 requires-dist = [
     { name = "fastapi", extras = ["all"], specifier = "==0.120.3" },
     { name = "pillow", specifier = "==12.0.0" },
-    { name = "python-multipart", specifier = "==0.0.20" },
     { name = "requests", specifier = "==2.32.5" },
-    { name = "uvicorn", extras = ["standard"], specifier = "==0.38.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -106,8 +100,6 @@ dev = [
     { name = "mypy", specifier = "==1.18.2" },
     { name = "pre-commit", specifier = "==4.3.0" },
     { name = "pylint", specifier = "==4.0.2" },
-]
-test = [
     { name = "pytest", specifier = "==8.4.2" },
     { name = "pytest-cov", specifier = "==7.0.0" },
     { name = "pytest-mock", specifier = "==3.15.1" },
