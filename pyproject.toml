@@ -7,9 +7,8 @@ requires-python = "==3.12.12"
 dependencies = [
     "fastapi[all]==0.120.3",
     "pillow==12.0.0",
-    "python-multipart==0.0.20",
+    # used to health check docker compose:
     "requests==2.32.5",
-    "uvicorn[standard]==0.38.0",
 ]
 
 [dependency-groups]
@@ -19,32 +18,16 @@ dev = [
     "mypy==1.18.2",
     "pylint==4.0.2",
     "pre-commit==4.3.0",
-]
-test = [
     "pytest==8.4.2",
     "pytest-cov==7.0.0",
     "pytest-mock==3.15.1",
     "testcontainers==4.13.2",
 ]
 
-[tool.uv]
-default-groups = [
-    "dev",
-    "test",
-]
-
-[tool.hatch.build.targets.sdist]
-include = ["src/bss_web_file_server"]
-
-[tool.hatch.build.targets.wheel]
-include = ["src/bss_web_file_server"]
-
-[tool.hatch.build.targets.wheel.sources]
-"src/bss_web_file_server" = "bss_web_file_server"
-
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build==0.9.7"]
+build-backend = "uv_build"
+module-name = ["bss_web_file_server"]
 
 [tool.isort]
 profile = "black"
