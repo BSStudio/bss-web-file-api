@@ -29,6 +29,11 @@ requires = ["uv_build==0.9.8"]
 build-backend = "uv_build"
 module-name = ["bss_web_file_server"]
 
+[tool.pytest]
+addopts = [
+    "--import-mode=importlib",
+]
+
 [tool.isort]
 profile = "black"
 
