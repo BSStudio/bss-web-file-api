@@ -8,12 +8,11 @@ dependencies = [
     "fastapi[standard-no-fastapi-cloud-cli]==0.121.1",
     "pillow==12.0.0",
     # this should be part of standard-no-fastapi-cloud-cli, but is missing:
+    # see: https://github.com/fastapi/fastapi/blob/6fae64ff49e8328048872714652a4dfa15406e41/pyproject.toml#L94-L98
     "pydantic-settings==2.12.0",
     # for Python 3.14 compatibility:
     "uvloop>=0.22.0",
     "pydantic_core>=2.40.0",
-    # used to health check docker compose:
-    "requests==2.32.5",
 ]
 
 [dependency-groups]
