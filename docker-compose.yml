@@ -7,7 +7,7 @@ services:
     environment:
       SERVER_BASE_PATH: /home/nonroot/assets
     healthcheck:
-      test: python -c "import requests, sys; sys.exit(0 if 'UP' in requests.get('http://localhost:8000/health').text else 1)"
+      test: wget --tries=1 --no-verbose -qO- http://0.0.0.0:8000/health | grep -q UP
       start_period: 2s
       interval: 10s
       timeout: 5s
