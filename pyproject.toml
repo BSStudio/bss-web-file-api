@@ -9,6 +9,9 @@ dependencies = [
     "pillow==12.0.0",
     # this should be part of standard-no-fastapi-cloud-cli, but is missing:
     "pydantic-settings==2.12.0",
+    # for Python 3.14 compatibility:
+    "uvloop>=0.22.0",
+    "pydantic_core>=2.40.0",
     # used to health check docker compose:
     "requests==2.32.5",
 ]
