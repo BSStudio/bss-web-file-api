@@ -6,7 +6,7 @@ authors = [{ name = "Bence Csik", email = "22349790+csikb@users.noreply.github.c
 requires-python = "==3.14.2"
 dependencies = [
     "fastapi[standard-no-fastapi-cloud-cli]==0.128.0",
-    "pillow==12.0.0",
+    "pillow==12.1.0",
     # this should be part of standard-no-fastapi-cloud-cli, but is missing:
     # see: https://github.com/fastapi/fastapi/blob/6fae64ff49e8328048872714652a4dfa15406e41/pyproject.toml#L94-L98
     "pydantic-settings==2.12.0",
