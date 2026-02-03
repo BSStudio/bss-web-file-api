@@ -29,7 +29,7 @@ dev = [
 ]
 
 [build-system]
-requires = ["uv_build==0.9.28"]
+requires = ["uv_build==0.9.29"]
 build-backend = "uv_build"
 module-name = ["bss_web_file_server"]
 
