@@ -23,7 +23,7 @@ dev = [
     "pylint==4.0.5",
     "pre-commit==4.5.1",
     "pytest==9.0.2",
-    "pytest-cov==7.0.0",
+    "pytest-cov==7.1.0",
     "pytest-mock==3.15.1",
     "testcontainers==4.14.2",
 ]
