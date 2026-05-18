@@ -34,7 +34,7 @@ jobs:
           python-version-file: "pyproject.toml"
       - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - run: uv run pytest tests --cov=src --cov-fail-under=100 --cov-report json
-      - uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6.0.0
+      - uses: codecov/codecov-action@e79a6962e0d4c0c17b229090214935d2e33f8354 # v6.0.1
         with:
           use_oidc: true
 
