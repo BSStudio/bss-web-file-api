@@ -2,7 +2,7 @@ FROM python:3.14.6-alpine@sha256:94457973ea8a27a799f0b8ea1fe3e3147fcbebaed63497a
 
 FROM python AS builder
 
-COPY --from=ghcr.io/astral-sh/uv:0.11.22@sha256:16b63af0e7342dd372da9ca989ea9fa542fc68f4640972d59a8450a5240fe42e /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.11.23@sha256:d0a0a753ab981624b49c97abc98821c1c09f4ca69d1ef5cee69c501be3d88479 /uv /uvx /bin/
 
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
