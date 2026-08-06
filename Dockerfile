@@ -37,12 +37,12 @@ FROM python AS app
 ENV PATH="/app/bin:${PATH}"
 
 # Create a non-root user
-RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
+RUN addgroup -g 1001 -S nonroot && adduser -u 1001 -S nonroot -G nonroot
 
 # Copy the pre-built /app virtualenv and change ownership to nonroot
-COPY --from=builder --chown=nonroot:nonroot --chmod=500 /app /app
+COPY --from=builder --chown=1001:1001 --chmod=500 /app /app
 
-USER nonroot:nonroot
+USER 1001:1001
 WORKDIR /app
 
 ENV SERVER_BASE_PATH="/home/nonroot/assets"
