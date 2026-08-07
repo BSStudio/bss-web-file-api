@@ -33,7 +33,8 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
-      - run: uv run pytest tests --cov=src --cov-fail-under=100 --cov-report json
+      - run: uv sync --locked --no-dev --no-editable --no-build
+      - run: uv run --no-sync pytest tests --cov=src --cov-fail-under=100 --cov-report json
       - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           use_oidc: true
@@ -48,8 +49,9 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
-      - run: uv run mypy
-      - run: uv run pylint src
+      - run: uv sync --locked --no-dev --no-editable --no-build
+      - run: uv run --no-sync mypy
+      - run: uv run --no-sync pylint src
 
   lint:
     name: Lint
@@ -61,5 +63,6 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
-      - run: uv run black --check .
-      - run: uv run isort --check .
+      - run: uv sync --locked --no-dev --no-editable --no-build
+      - run: uv run --no-sync black --check .
+      - run: uv run --no-sync isort --check .
