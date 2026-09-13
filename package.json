@@ -1,6 +1,6 @@
 {
   "name": "bss-web-file-api",
-  "packageManager": "pnpm@12.4.0",
+  "packageManager": "pnpm@12.4.1",
   "engines": {
     "node": "24.21.0"
   },
