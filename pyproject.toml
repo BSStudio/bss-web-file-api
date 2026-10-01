@@ -19,7 +19,7 @@ dependencies = [
 dev = [
     "black==26.5.1",
     "isort==9.0.2",
-    "mypy==2.3.1",
+    "mypy==2.4.0",
     "pylint==4.1.1",
     "pre-commit==4.6.2",
     "pytest==9.1.1",
