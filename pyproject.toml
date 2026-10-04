@@ -17,7 +17,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "black==26.5.1",
+    "black==26.10.0",
     "isort==9.0.2",
     "mypy==2.4.0",
     "pylint==4.1.2",
