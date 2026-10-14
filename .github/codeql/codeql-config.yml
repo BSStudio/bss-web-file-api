@@ -1,0 +1,10 @@
+name: "CodeQL config"
+
+queries:
+  # superset of the default suite: adds lower precision security queries and code quality queries
+  - uses: security-and-quality
+
+# test code is not deployed, alerts there are noise
+paths-ignore:
+  - tests
+  - tests-int
