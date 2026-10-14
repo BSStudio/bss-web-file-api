@@ -36,16 +36,19 @@ FROM python AS app
 # Add the virtualenv to PATH
 ENV PATH="/app/bin:${PATH}"
 
-# Create a non-root user
-RUN addgroup -g 1001 -S nonroot && adduser -u 1001 -S nonroot -G nonroot
+# Create a non-root user and drop pip/ensurepip, so nothing can be installed at runtime
+RUN addgroup -g 1001 -S nonroot && adduser -u 1001 -S nonroot -G nonroot \
+    && rm -rf /usr/local/bin/pip* /usr/local/lib/python3.15/ensurepip /usr/local/lib/python3.15/site-packages/pip*
 
-# Copy the pre-built /app virtualenv and change ownership to nonroot
-COPY --from=builder --chown=1001:1001 --chmod=500 /app /app
+# Copy the pre-built /app virtualenv; it stays root-owned, so the app cannot modify its own code
+COPY --from=builder /app /app
 
 USER 1001:1001
 WORKDIR /app
 
 ENV SERVER_BASE_PATH="/home/nonroot/assets"
+HEALTHCHECK --interval=10s --timeout=5s --start-period=2s --retries=5 \
+    CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
 CMD ["fastapi", "run", "--entrypoint", "bss_web_file_server.main:app"]
 
 EXPOSE 8000
