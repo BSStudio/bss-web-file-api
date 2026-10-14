@@ -35,7 +35,7 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           version: "latest-known"
-      - run: uv run pytest tests --cov=src --cov-fail-under=100 --cov-report json
+      - run: uv run --locked pytest tests --cov=src --cov-fail-under=100 --cov-report json
       - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           use_oidc: true
@@ -52,8 +52,8 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           version: "latest-known"
-      - run: uv run mypy
-      - run: uv run pylint src
+      - run: uv run --locked mypy
+      - run: uv run --locked pylint src
 
   lint:
     name: Lint
@@ -67,5 +67,5 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           version: "latest-known"
-      - run: uv run black --check .
-      - run: uv run isort --check .
+      - run: uv run --locked black --check .
+      - run: uv run --locked isort --check .
