@@ -6,9 +6,4 @@ services:
       - "8000"
     environment:
       SERVER_BASE_PATH: /home/nonroot/assets
-    healthcheck:
-      test: wget --tries=1 --no-verbose -qO- http://0.0.0.0:8000/health | grep -q UP
-      start_period: 2s
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # healthcheck: defined by the image's HEALTHCHECK
