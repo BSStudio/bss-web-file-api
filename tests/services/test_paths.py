@@ -15,7 +15,9 @@ def test_should_reject_name_outside_base(tmp_path, name):
         child_path(tmp_path, name)
 
 
-@pytest.mark.parametrize("name", ["nested/name", "nested/deeper/../name"])
-def test_should_reject_name_in_subfolder(tmp_path, name):
-    with pytest.raises(ValueError, match="not a single folder name"):
+@pytest.mark.parametrize(
+    "name", ["nested/name", "nested/../url", "nested\\name", "null\0byte"]
+)
+def test_should_reject_name_with_several_components(tmp_path, name):
+    with pytest.raises(ValueError, match="single folder name"):
         child_path(tmp_path, name)
