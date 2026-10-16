@@ -4,9 +4,11 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
+from .folder_name import FolderName
+
 
 class Member(BaseModel):
     """A class for storing member data."""
 
     id: UUID
-    url: str
+    url: FolderName

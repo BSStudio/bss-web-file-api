@@ -108,3 +108,17 @@ def test_upload_member_picture(client, mocker):
     assert service_mock.create_profile_picture.call_args[0][1] == member_object.id
     assert response.status_code == 200
     assert response.json() == str(member_object.id)
+
+
+@pytest.mark.parametrize("url", ["../escape", "/etc/passwd", "nested/url"])
+def test_create_member_folder_rejects_path_like_url(client, mocker, url):
+    service_mock = mocker.patch("bss_web_file_server.routers.member.service")
+
+    member_data = {"id": str(member_object.id), "url": url}
+
+    response = client.post(
+        "/api/v1/member", json=member_data, auth=("admin", "password")
+    )
+
+    assert response.status_code == 422
+    assert service_mock.create_folder_structure.call_count == 0

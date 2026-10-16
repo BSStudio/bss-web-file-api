@@ -6,6 +6,7 @@ from uuid import UUID
 from ..models.member import Member
 from ..settings import settings
 from .image import ImgFormat, create_images
+from .paths import child_path
 
 
 class MemberService:
@@ -82,13 +83,13 @@ class MemberService:
         This method will return the base path
         where the id folders for members are located.
         """
-        return Path(self.id_paths_base, str(member_id))
+        return child_path(self.id_paths_base, str(member_id))
 
     def to_url_path(self, member_url: str):
         """
         This method will return the base path
         where the url folders for members are located.
         """
-        return Path(self.url_paths_base, member_url)
+        return child_path(self.url_paths_base, member_url)
 
     # pylint: enable=duplicate-code

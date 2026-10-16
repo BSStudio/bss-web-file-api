@@ -75,3 +75,8 @@ def test_create_profile_picture(member_service, mocker):
         (854, 480, "m"),
     ]
     mock_create_images.assert_called_once_with(img_file, image_folder, sizes)
+
+
+def test_to_url_path_rejects_path_outside_base(member_service):
+    with pytest.raises(ValueError):
+        member_service.to_url_path("../escape")
