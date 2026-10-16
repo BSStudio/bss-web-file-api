@@ -30,3 +30,9 @@ def test_should_throw_on_empty_url_array():
     empty_urls = []
     with pytest.raises(ValidationError):
         Video(id=valid_uid, urls=empty_urls)
+
+
+@pytest.mark.parametrize("url", ["", "..", "../escape", "/etc/passwd", "nested/url"])
+def test_should_throw_on_path_like_url(url):
+    with pytest.raises(ValidationError):
+        Video(id=valid_uid, urls=["url", url])

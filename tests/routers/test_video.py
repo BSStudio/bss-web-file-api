@@ -104,3 +104,15 @@ def test_upload_video_poster(client, mocker):
     assert service_mock.create_thumbnails.call_args[0][1] == video_object.id
     assert response.status_code == 200
     assert response.json() == str(video_object.id)
+
+
+@pytest.mark.parametrize("url", ["../escape", "/etc/passwd", "nested/url"])
+def test_update_video_folder_rejects_path_like_url(client, mocker, url):
+    service_mock = mocker.patch("bss_web_file_server.routers.video.service")
+
+    video_data = {"id": str(video_object.id), "urls": ["szobakoomando-hk", url]}
+
+    response = client.put("/api/v1/video", json=video_data, auth=("admin", "password"))
+
+    assert response.status_code == 422
+    assert service_mock.update_symlinks.call_count == 0

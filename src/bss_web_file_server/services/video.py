@@ -6,6 +6,7 @@ from uuid import UUID
 from ..models.video import Video
 from ..settings import settings
 from .image import ImgFormat, create_images
+from .paths import child_path
 
 
 class VideoService:
@@ -82,13 +83,13 @@ class VideoService:
         This method will return the base path
         where the id folders for videos are located.
         """
-        return Path(self.id_paths_base, str(video_id))
+        return child_path(self.id_paths_base, str(video_id))
 
     def to_url_path(self, video_url: str):
         """
         This method will return the base path
         where the url folders for videos are located.
         """
-        return Path(self.url_paths_base, video_url)
+        return child_path(self.url_paths_base, video_url)
 
     # pylint: enable=duplicate-code

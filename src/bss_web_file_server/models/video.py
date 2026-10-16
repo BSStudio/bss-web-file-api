@@ -6,9 +6,11 @@ from uuid import UUID
 from annotated_types import Len
 from pydantic import BaseModel
 
+from .folder_name import FolderName
+
 
 class Video(BaseModel):
     """A class for storing video data."""
 
     id: UUID
-    urls: Annotated[list[str], Len(min_length=1)]
+    urls: Annotated[list[FolderName], Len(min_length=1)]

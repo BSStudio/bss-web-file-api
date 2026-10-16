@@ -78,3 +78,8 @@ def test_create_video_thumbnail(video_service, mocker):
         (854, 480, "sd"),
     ]
     mock_create_images.assert_called_once_with(img_file, image_folder, sizes)
+
+
+def test_to_url_path_rejects_path_outside_base(video_service):
+    with pytest.raises(ValueError):
+        video_service.to_url_path("../escape")
