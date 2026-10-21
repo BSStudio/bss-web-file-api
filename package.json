@@ -2,7 +2,7 @@
   "name": "bss-web-file-api",
   "packageManager": "pnpm@12.14.0",
   "engines": {
-    "node": "24.22.0"
+    "node": "24.22.1"
   },
   "devDependencies": {
     "semantic-release": "25.0.9"
