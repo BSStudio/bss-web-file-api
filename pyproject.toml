@@ -3,7 +3,7 @@ name = "bss-web-file-server"
 version = "1.0.0"
 description = "BSS file server API"
 authors = [{ name = "Bence Csik", email = "22349790+csikb@users.noreply.github.com" }]
-requires-python = "==3.15.1"
+requires-python = "==3.15.2"
 dependencies = [
     "fastapi[standard-no-fastapi-cloud-cli]==0.162.0",
     "pillow==13.0.0",
