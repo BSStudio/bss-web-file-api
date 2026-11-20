@@ -19,7 +19,7 @@ ENV UV_LINK_MODE=copy \
 RUN --mount=type=cache,target=/root/.cache \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-dev --no-install-project
+    uv sync --locked --no-build --no-binary-package pyyaml --no-dev --no-install-project
 
 COPY ./src /src
 
@@ -29,7 +29,7 @@ COPY ./src /src
 RUN --mount=type=cache,target=/root/.cache \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-dev --no-editable
+    uv sync --locked --no-build --no-binary-package pyyaml --no-dev --no-editable
 
 FROM python AS app
 
