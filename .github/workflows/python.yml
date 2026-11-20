@@ -35,7 +35,8 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked pytest tests --cov=src --cov-fail-under=100 --cov-report json
+      # PyYAML has no Python 3.15 wheel; allow only it to build from source.
+      - run: uv run --locked --no-build --no-binary-package pyyaml pytest tests --cov=src --cov-fail-under=100 --cov-report json
       - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           use_oidc: true
@@ -52,8 +53,8 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked mypy
-      - run: uv run --locked pylint src
+      - run: uv run --locked --no-build --no-binary-package pyyaml mypy
+      - run: uv run --locked --no-build --no-binary-package pyyaml pylint src
 
   lint:
     name: Lint
@@ -67,5 +68,5 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked black --check .
-      - run: uv run --locked isort --check .
+      - run: uv run --locked --no-build --no-binary-package pyyaml black --check .
+      - run: uv run --locked --no-build --no-binary-package pyyaml isort --check .
