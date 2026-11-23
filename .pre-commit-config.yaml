@@ -1,16 +1,20 @@
+# The hooks run the tools from uv.lock, the same versions CI runs.
 repos:
-  - repo: https://github.com/astral-sh/uv-pre-commit
-    # uv version.
-    rev: 0.9.5
+  - repo: local
     hooks:
       - id: uv-lock
-  - repo: https://github.com/pycqa/isort
-    rev: '7.0.0'
-    hooks:
+        name: uv lock --check
+        entry: uv lock --check
+        language: system
+        pass_filenames: false
+        files: ^(pyproject\.toml|uv\.lock)$
       - id: isort
-  - repo: https://github.com/psf/black
-    rev: '25.9.0'
-    hooks:
+        name: isort
+        entry: uv run --locked isort
+        language: system
+        types: [python]
       - id: black
-# Note: can't run mypy via pre-commit as it requires type stubs to be installed which
-# pre-commit doesn't handle well. Run mypy directly in CI instead.
+        name: black
+        entry: uv run --locked black
+        language: system
+        types: [python]

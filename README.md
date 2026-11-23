@@ -38,7 +38,7 @@ uv sync
 ### Set up commit hooks
 
 ```shell
-pre-commit install
+uv run pre-commit install
 ```
 
 ## Run server
