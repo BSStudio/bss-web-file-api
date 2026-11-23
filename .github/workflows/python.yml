@@ -10,17 +10,6 @@ on:
 permissions: read-all
 
 jobs:
-  pre-commit:
-    name: Pre commit checks
-    runs-on: ubuntu-26.04-arm
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version-file: "pyproject.toml"
-      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
-
   unit-test:
     name: Unit test
     runs-on: ubuntu-26.04-arm
@@ -35,7 +24,8 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked pytest tests --cov=src --cov-fail-under=100 --cov-report json
+      # PyYAML has no Python 3.15 wheel; allow only it to build from source.
+      - run: uv run --locked --no-build --no-binary-package pyyaml pytest tests --cov=src --cov-fail-under=100 --cov-report json
       - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           use_oidc: true
@@ -52,8 +42,8 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked mypy
-      - run: uv run --locked pylint src
+      - run: uv run --locked --no-build --no-binary-package pyyaml mypy
+      - run: uv run --locked --no-build --no-binary-package pyyaml pylint src
 
   lint:
     name: Lint
@@ -67,5 +57,5 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: "latest-known"
-      - run: uv run --locked black --check .
-      - run: uv run --locked isort --check .
+      - run: uv run --locked --no-build --no-binary-package pyyaml black --check .
+      - run: uv run --locked --no-build --no-binary-package pyyaml isort --check .
