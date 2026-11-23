@@ -5,7 +5,7 @@
     "node": "26.13.1"
   },
   "devDependencies": {
-    "semantic-release": "25.0.9"
+    "semantic-release": "26.0.1"
   },
   "scripts": {
     "release": "semantic-release"
