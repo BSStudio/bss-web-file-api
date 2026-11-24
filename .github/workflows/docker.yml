@@ -70,7 +70,7 @@ jobs:
             *.cache-from=type=gha
             *.cache-to=type=gha,mode=max
 
-      - uses: anchore/scan-action@27805bf3b4e84b4a5c980df22ed233c00390a439 # v7.4.2
+      - uses: anchore/scan-action@11983a512817154c80a9db660c1a184be7513ed6 # v7.4.3
         id: scan
         if: ${{ github.event_name != 'pull_request' && github.event_name != 'merge_group' }}
         with:
